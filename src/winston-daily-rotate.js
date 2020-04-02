@@ -1,7 +1,8 @@
-const winston = require('winston');
+const { createLogger, format, transports } = require('winston');
 require('winston-daily-rotate-file');
+const { combine, timestamp, label, prettyPrint } = format;
 
-const transport = new winston.transports.DailyRotateFile({
+const transport = new transports.DailyRotateFile({
   filename: './logs/application-%DATE%.log',
   datePattern: 'YYYY-MM-DD-HH',
   zippedArchive: true,
@@ -13,8 +14,10 @@ transport.on('rotate', function(oldFilename, newFilename) {
   // do something fun
 });
 
-const logger = winston.createLogger({
-  level: 'verbose', 
+const logger = createLogger({
+  level: 'verbose',
+  format: combine(label({ label: 'log' }), timestamp(), prettyPrint()),
+  defaultMeta: { service: 'api-service' },
   transports: [transport]
 });
 
