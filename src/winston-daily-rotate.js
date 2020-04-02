@@ -3,11 +3,14 @@ require('winston-daily-rotate-file');
 const { combine, timestamp, label, prettyPrint } = format;
 
 const transport = new transports.DailyRotateFile({
-  filename: './logs/application-%DATE%.log',
+  filename: 'application-%DATE%.log',
+  dirname: './logs',
+  // frequency: '1m',
   datePattern: 'YYYY-MM-DD-HH',
   zippedArchive: true,
   maxSize: '20m',
-  maxFiles: '14d'
+  maxFiles: '14d',
+  auditFile: 'log-audit.json'
 });
 
 transport.on('rotate', function(oldFilename, newFilename) {
