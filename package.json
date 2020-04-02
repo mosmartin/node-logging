@@ -1,0 +1,27 @@
+{
+  "name": "logging",
+  "version": "1.0.0",
+  "description": "Node logging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mosmartin/node-logging.git"
+  },
+  "keywords": [
+    "winston",
+    "logging"
+  ],
+  "author": "Martin Macharia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mosmartin/node-logging/issues"
+  },
+  "homepage": "https://github.com/mosmartin/node-logging#readme",
+  "dependencies": {
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2"
+  }
+}
